@@ -6,7 +6,7 @@ const BinaryExpression = arith.BinaryExpression;
 
 const ExpressionVisitor = @import("visitor.zig").ExpressionVisitor;
 
-pub const Evaluator = ExpressionVisitor(void, i64) {
+pub const Evaluator = ExpressionVisitor(void, i64){
     .visitValue = visitValue,
     .visitAdd = visitAdd,
     .visitSub = visitSub,
