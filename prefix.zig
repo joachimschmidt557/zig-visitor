@@ -25,7 +25,7 @@ fn visitAdd(arg: *Allocator, x: BinaryExpression) Allocator.Error![]u8 {
     defer arg.free(left);
     defer arg.free(right);
 
-    return try std.fmt.allocPrint(arg, "(+ {} {})", .{ left, right });
+    return try std.fmt.allocPrint(arg, "(+ {s} {s})", .{ left, right });
 }
 
 fn visitSub(arg: *Allocator, x: BinaryExpression) Allocator.Error![]u8 {
@@ -34,7 +34,7 @@ fn visitSub(arg: *Allocator, x: BinaryExpression) Allocator.Error![]u8 {
     defer arg.free(left);
     defer arg.free(right);
 
-    return try std.fmt.allocPrint(arg, "(- {} {})", .{ left, right });
+    return try std.fmt.allocPrint(arg, "(- {s} {s})", .{ left, right });
 }
 
 fn visitMul(arg: *Allocator, x: BinaryExpression) Allocator.Error![]u8 {
@@ -43,7 +43,7 @@ fn visitMul(arg: *Allocator, x: BinaryExpression) Allocator.Error![]u8 {
     defer arg.free(left);
     defer arg.free(right);
 
-    return try std.fmt.allocPrint(arg, "(* {} {})", .{ left, right });
+    return try std.fmt.allocPrint(arg, "(* {s} {s})", .{ left, right });
 }
 
 fn visitDiv(arg: *Allocator, x: BinaryExpression) Allocator.Error![]u8 {
@@ -52,5 +52,5 @@ fn visitDiv(arg: *Allocator, x: BinaryExpression) Allocator.Error![]u8 {
     defer arg.free(left);
     defer arg.free(right);
 
-    return try std.fmt.allocPrint(arg, "(/ {} {})", .{ left, right });
+    return try std.fmt.allocPrint(arg, "(/ {s} {s})", .{ left, right });
 }
