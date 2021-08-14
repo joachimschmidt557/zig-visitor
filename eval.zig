@@ -15,21 +15,26 @@ pub const Evaluator = ExpressionVisitor(void, i64){
 };
 
 fn visitValue(arg: void, x: i64) i64 {
+    _ = arg;
     return x;
 }
 
 fn visitAdd(arg: void, x: BinaryExpression) i64 {
+    _ = arg;
     return Evaluator.visit({}, x.left.*) + Evaluator.visit({}, x.right.*);
 }
 
 fn visitSub(arg: void, x: BinaryExpression) i64 {
+    _ = arg;
     return Evaluator.visit({}, x.left.*) - Evaluator.visit({}, x.right.*);
 }
 
 fn visitMul(arg: void, x: BinaryExpression) i64 {
+    _ = arg;
     return Evaluator.visit({}, x.left.*) * Evaluator.visit({}, x.right.*);
 }
 
 fn visitDiv(arg: void, x: BinaryExpression) i64 {
+    _ = arg;
     return @divTrunc(Evaluator.visit({}, x.left.*), Evaluator.visit({}, x.right.*));
 }
