@@ -14,7 +14,7 @@ const PrefixFormatter = @import("prefix.zig").PrefixFormatter;
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     defer _ = gpa.deinit();
-    const allocator = &gpa.allocator;
+    const allocator = gpa.allocator();
 
     const a = Expression{ .Value = 12 };
     const b = Expression{ .Value = 34 };
@@ -22,11 +22,11 @@ pub fn main() !void {
     const d = Expression{ .Mul = BinaryExpression{ .left = &a, .right = &c } };
 
     // First example of a visitor: Evaluate an expression
-    std.debug.warn("{}\n", .{Evaluator.visit({}, d)});
+    std.debug.print("{}\n", .{Evaluator.visit({}, d)});
 
     // Second example: Print an expression in a lisp-y prefix form
     const prefix_formatted = try PrefixFormatter.visit(allocator, d);
     defer allocator.free(prefix_formatted);
 
-    std.debug.warn("{s}\n", .{prefix_formatted});
+    std.debug.print("{s}\n", .{prefix_formatted});
 }
