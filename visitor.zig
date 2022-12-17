@@ -12,11 +12,11 @@ pub fn ExpressionVisitor(comptime ArgTy: type, comptime RetTy: type) type {
         visitMul: VisitMulFn,
         visitDiv: VisitDivFn,
 
-        const VisitValueFn = fn (arg: ArgTy, x: i64) RetTy;
-        const VisitAddFn = fn (arg: ArgTy, x: BinaryExpression) RetTy;
-        const VisitSubFn = fn (arg: ArgTy, x: BinaryExpression) RetTy;
-        const VisitMulFn = fn (arg: ArgTy, x: BinaryExpression) RetTy;
-        const VisitDivFn = fn (arg: ArgTy, x: BinaryExpression) RetTy;
+        const VisitValueFn = *const fn (arg: ArgTy, x: i64) RetTy;
+        const VisitAddFn = *const fn (arg: ArgTy, x: BinaryExpression) RetTy;
+        const VisitSubFn = *const fn (arg: ArgTy, x: BinaryExpression) RetTy;
+        const VisitMulFn = *const fn (arg: ArgTy, x: BinaryExpression) RetTy;
+        const VisitDivFn = *const fn (arg: ArgTy, x: BinaryExpression) RetTy;
 
         const Self = @This();
 
